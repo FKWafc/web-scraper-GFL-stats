@@ -9,6 +9,13 @@ soup = BeautifulSoup(html_text, 'lxml')
 # finds the data saved under table headers(th) and table data (td)
 stats_html_tags = soup.find_all('th', style="text-align:left;")
 stats_html_data = soup.find_all('td', style="text-align:left;")
+print(stats_html_data)
+# convert the html into just text, doesnt work right but I can now print all the basic text on the page.
+for y in stats_html_data:
+    text = y
+    print(text.renderContents())
+#trimmed_text = text.strip()
+
 
 #simple way of printing the text in the tables. Still very unstructured
 headings = []
@@ -22,13 +29,14 @@ for tags in stats_html_tags:
         data2 = []
         for data in stats_html_data:
 
-            # this line is currently broken
-            x = soup.find_all('td', style="text-align:left;", text=True).text
+            # this line is currently broken,, UPDATE: working on this above where i make the Initial instance of bs4
+            #x = soup.find_all('td', style="text-align:left;", text=True)
+            x = 0
             if x in data2:
                 pass
             else:
                 data2.append(x)
-        print(data2)
+        #print(data2)
         #print(tags.text)
         #print(data.text)
 """
